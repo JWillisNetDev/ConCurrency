@@ -1,7 +1,9 @@
 ﻿namespace ConCurrency.Data.Dtos.Products;
 
-public record ProductDto(
-    string ProductId,
-    string Name,
-    string Description,
-    double Price);
+public class ProductDto
+{
+    public string? ProductId { get; set; }
+    public string? Name { get; set; }
+    public string? Description { get; set; }
+    public double Price { get; set; }
+}

@@ -1,6 +1,10 @@
 ﻿namespace ConCurrency.Data.Dtos.Orders;
 
-public record UpdateOrderDto(
-    [property: Required] string ProductId,
-    [property: Required] string CustomerId,
-    int Quantity);
+public class UpdateOrderDto
+{
+    [Required]
+    public string? ProductId { get; set; }
+    [Required]
+    public string? CustomerId { get; set; }
+    public int Quantity { get; set; }
+}

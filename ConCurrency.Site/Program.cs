@@ -1,4 +1,5 @@
 using ConCurrency.Site.Components;
+using ConCurrency.Site.HttpClients.Customers;
 
 using MudBlazor.Services;
 
@@ -9,6 +10,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddMudServices();
+
+builder.Services.AddHttpClient<ICustomersClient, CustomersClient>(httpClient =>
+{
+    httpClient.BaseAddress = builder.Configuration.GetSection("ConCurrencyApi").GetValue<Uri>("BaseAddress")
+                             ?? throw new InvalidOperationException("No base address found for ConCurrency API");
+});
 
 var app = builder.Build();
 

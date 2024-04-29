@@ -1,3 +1,7 @@
 ﻿namespace ConCurrency.Data.Dtos.Customers;
 
-public record CustomerDto(string CustomerId, string Name);
+public class CustomerDto
+{
+    public string? CustomerId { get; set; }
+    public string? Name { get; set; }
+}

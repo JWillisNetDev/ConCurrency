@@ -8,4 +8,8 @@
   <ItemGroup>
     <PackageReference Include="MudBlazor" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\ConCurrency.Data\ConCurrency.Data.csproj" />
+  </ItemGroup>
 </Project>

@@ -3,8 +3,10 @@ using ConCurrency.Data.Dtos.Products;
 
 namespace ConCurrency.Data.Dtos.Orders;
 
-public record OrderDto(
-    string OrderId,
-    CustomerDto Customer,
-    ProductDto Product,
-    int Quantity);
+public class OrderDto
+{
+    public string? OrderId { get; set; }
+    public CustomerDto? Customer { get; set; }
+    public ProductDto? Product { get; set; }
+    public int Quantity { get; set; }
+}

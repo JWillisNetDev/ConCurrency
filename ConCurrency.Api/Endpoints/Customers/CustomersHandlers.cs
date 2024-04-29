@@ -97,7 +97,7 @@ public class CustomersHandlers
             return TypedResults.NotFound();
         }
 
-        if (dto is not { Name: { Length: > 0 } name })
+        if (dto is not { Name.Length: > 0 })
         {
             return TypedResults.BadRequest();
         }

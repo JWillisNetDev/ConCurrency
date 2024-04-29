@@ -1,3 +1,7 @@
 ﻿namespace ConCurrency.Data.Dtos.Customers;
 
-public record UpdateCustomerDto([property: Required] string Name);
+public class UpdateCustomerDto
+{
+    [Required]
+    public string? Name { get; set; }
+}

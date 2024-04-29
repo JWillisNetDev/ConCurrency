@@ -1,6 +1,10 @@
 ﻿namespace ConCurrency.Data.Dtos.Products;
 
-public record CreateProductDto(
-    [property: Required] string Name,
-    [property: Required] string Description,
-    double Price);
+public class CreateProductDto
+{
+    [Required]
+    public string? Name { get; set; }
+    [Required]
+    public string? Description { get; set; }
+    public double Price { get; set; }
+}
