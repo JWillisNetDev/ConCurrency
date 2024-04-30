@@ -8,7 +8,10 @@ var postgres = builder
     .WithPgAdmin()
     .AddDatabase("ConCurrencyDb");
 
-var exchangeService = builder.AddProject<Projects.ConCurrency_ExchangeService>("concurrency-exchangeservice");
+var redis = builder.AddRedis("cache");
+
+var exchangeService = builder.AddProject<Projects.ConCurrency_ExchangeService>("concurrency-exchangeservice")
+    .WithReference(redis);
 
 var conCurrencyApi = builder.AddProject<Projects.ConCurrency_Api>("concurrency-api")
     .WithReference(postgres);

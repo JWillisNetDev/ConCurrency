@@ -23,6 +23,8 @@ builder.Services.AddHttpClient<IFixerClient, FixerClient>((isp, http) =>
     http.BaseAddress = options.Value.BaseAddress;
 });
 
+builder.AddRedisDistributedCache("cache");
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
