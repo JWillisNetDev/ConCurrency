@@ -8,8 +8,12 @@ namespace ConCurrency.ExchangeService.Endpoints.ExchangeRates;
 
 public class ExchangeRatesMethods
 {
-    public static async Task<Ok<SymbolsDto>> GetSymbols([FromServices] IFixerClient fixerClient)
+    public static async Task<Ok<SymbolsDto>> GetSymbols(
+        [FromServices] IFixerClient fixerClient,
+        [FromServices] ILogger<ExchangeRatesMethods> logger)
     {
+        logger.LogInformation("Getting symbols from Fixer API {at}", DateTimeOffset.UtcNow);
+
         var response = await fixerClient.GetSymbolsAsync();
 
         return TypedResults.Ok(response);

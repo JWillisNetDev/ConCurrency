@@ -14,8 +14,11 @@ public class ProductsHandlers
     public static async Task<Ok<ProductDto[]>> GetProducts(
         [AsParameters] PaginationParams @params,
         [FromServices] ConCurrencyDbContext db,
+        [FromServices] ILogger<ProductsHandlers> logger,
         CancellationToken cancellationToken = default)
     {
+        logger.LogInformation("Getting products from database {at}", DateTimeOffset.UtcNow);
+
         ProductMapper mapper = new();
 
         var products = await db.Products
