@@ -15,14 +15,12 @@ builder.Services.AddMudServices();
 
 builder.Services.AddHttpClient<ConCurrencyServiceClient>(httpClient =>
 {
-    httpClient.BaseAddress = builder.Configuration.GetSection("ConCurrencyApi").GetValue<Uri>("BaseAddress")
-                             ?? throw new InvalidOperationException("No base address found for ConCurrency API");
+    httpClient.BaseAddress = new Uri("http://concurrency-api");
 });
 
 builder.Services.AddHttpClient<ExchangeServiceClient>(httpClient =>
 {
-    httpClient.BaseAddress = builder.Configuration.GetSection("ExchangeServiceApi").GetValue<Uri>("BaseAddress")
-                             ?? throw new InvalidOperationException("No base address found for Exchange Service API");
+    httpClient.BaseAddress = new Uri("http://concurrency-exchangeservice");
 });
 
 var app = builder.Build();
