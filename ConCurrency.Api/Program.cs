@@ -13,12 +13,8 @@ builder.AddServiceDefaults();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContextFactory<ConCurrencyDbContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("ConCurrencyDb")
-                           ?? throw new InvalidOperationException("Must supply a connection string for the database using configuration.");
-    options.UseNpgsql(connectionString, o => o.MigrationsAssembly("ConCurrency.Data"));
-});
+builder.AddNpgsqlDbContext<ConCurrencyDbContext>("ConCurrencyDb",
+    configureDbContextOptions: options => options.UseNpgsql(o => o.MigrationsAssembly("ConCurrency.Data")));
 
 var app = builder.Build();
 
