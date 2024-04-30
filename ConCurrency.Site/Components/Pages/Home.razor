@@ -2,8 +2,8 @@
 @using ConCurrency.Site.HttpClients
 @page "/"
 @rendermode InteractiveServer
-@inject IExchangeServiceClient ExchangeService
-@inject IProductsServiceClient ProductService
+@inject ExchangeServiceClient ExchangeService
+@inject ConCurrencyServiceClient ConCurrencyService
 
 <MudPopoverProvider />
 
@@ -61,7 +61,7 @@
 		await base.OnAfterRenderAsync(firstRender);
 		if (firstRender)
 		{
-			_Products = await ProductService.GetProductsAsync();
+			_Products = await ConCurrencyService.GetProductsAsync();
 			StateHasChanged();
 		}
 	}
@@ -87,7 +87,7 @@
 			return;
 		}
 
-		_Products = await ProductService.GetProductsAsync();
+		_Products = await ConCurrencyService.GetProductsAsync();
 		var conversionRates = await ExchangeService.GetExchangeRatesAsync("USD", [_SelectedCurrency]);
 		_ConversionRate = conversionRates[_SelectedCurrency];
 		StateHasChanged();

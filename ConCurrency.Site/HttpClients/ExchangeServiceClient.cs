@@ -2,7 +2,7 @@
 
 namespace ConCurrency.Site.HttpClients;
 
-public class ExchangeServiceClient : IExchangeServiceClient
+public class ExchangeServiceClient
 {
     private readonly HttpClient _client;
 
