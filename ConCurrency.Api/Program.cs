@@ -23,6 +23,7 @@ app.MapDefaultEndpoints();
 // Migrate the database
 using (var scope = app.Services.CreateScope())
 {
+    await Task.Delay(10_000); // Gives the Database 10 seconds to start up.
     var db = scope.ServiceProvider.GetRequiredService<ConCurrencyDbContext>();
     await db.Database.MigrateAsync();
 }

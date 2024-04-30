@@ -1,6 +1,12 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-var postgres = builder.AddPostgres("pg").AddDatabase("ConCurrencyDb");
+var postgresPassword = builder.AddParameter("postgresPassword", secret: true); // Don't forget to set your secret!
+
+var postgres = builder
+    .AddPostgres("pg", password: postgresPassword)
+    .WithDataVolume()
+    .WithPgAdmin()
+    .AddDatabase("ConCurrencyDb");
 
 var exchangeService = builder.AddProject<Projects.ConCurrency_ExchangeService>("concurrency-exchangeservice");
 
