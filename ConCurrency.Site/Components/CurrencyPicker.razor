@@ -1,0 +1,36 @@
+﻿@using ConCurrency.Site.HttpClients
+@rendermode InteractiveServer
+@inject IExchangeServiceClient ExchangeService
+
+<MudAutocomplete T="string"
+                 Label="Currency"
+				 Immediate="true"
+				 CoerceValue="false"
+				 ResetValueOnEmptyText="true"
+				 @bind-Value="SelectedValue"
+                 SearchFunc="@GetSymbols"
+				 TransformOrigin="Origin.TopCenter"
+				 AnchorOrigin="Origin.TopCenter" />
+
+@code
+{
+	[Parameter]
+	public required string SelectedValue { get; set; }
+
+	[Parameter]
+	public EventCallback<string> SelectedValueChanged { get; set; }
+
+	private async Task<IEnumerable<string>> GetSymbols(string input)
+	{
+		var symbols = await ExchangeService.GetSymbolsAsync();
+
+		if (string.IsNullOrEmpty(input))
+		{
+			return symbols.Select(x => x.Key);
+		}
+
+		return symbols
+			.Where(x => x.Key.Contains(input, StringComparison.InvariantCultureIgnoreCase) || x.Value.Contains(input, StringComparison.InvariantCultureIgnoreCase))
+			.Select(x => x.Key);
+	}
+}
