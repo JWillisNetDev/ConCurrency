@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsAspireHost>true</IsAspireHost>
+    <UserSecretsId>8f4bc0dd-5d3b-4889-9eee-2d4c1e981387</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.AppHost" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConCurrency.Api\ConCurrency.Api.csproj" />
+    <ProjectReference Include="..\ConCurrency.ExchangeService\ConCurrency.ExchangeService.csproj" />
+    <ProjectReference Include="..\ConCurrency.Site\ConCurrency.Site.csproj" />
+  </ItemGroup>
+
+</Project>

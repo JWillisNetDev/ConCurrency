@@ -11,5 +11,6 @@
   
   <ItemGroup>
     <ProjectReference Include="..\ConCurrency.Data\ConCurrency.Data.csproj" />
+    <ProjectReference Include="..\ConCurrency.ServiceDefaults\ConCurrency.ServiceDefaults.csproj" />
   </ItemGroup>
 </Project>
